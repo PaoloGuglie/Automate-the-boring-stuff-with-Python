@@ -2,7 +2,6 @@
 
 from random import randint
 from time import sleep
-from copy import deepcopy
 
 from settings import *
 
@@ -36,19 +35,61 @@ def display_cells_on_screen(height: int, width: int, cells: list[list[str]]) -> 
         print()
 
 
+def get_next_cells(width: int, height: int, current_cells) -> list[list[str]]:
+
+    next_cells = [[' ' for _ in range(height)] for _ in range(width)]
+
+    for x in range(width):
+        for y in range(height):
+            # get neighboring coordinates
+            left_coordinates = (x - 1) % width
+            right_coordinates = (x + 1) % width
+            above_coordinates = (y - 1) % height
+            below_coordinates = (y + 1) % height
+
+            # Count living neighbors
+            neighbors = 0
+
+            if current_cells[left_coordinates][above_coordinates] == '#':
+                neighbors += 1
+            if current_cells[x][above_coordinates] == '#':
+                neighbors += 1
+            if current_cells[right_coordinates][above_coordinates] == '#':
+                neighbors += 1
+            if current_cells[left_coordinates][y] == '#':
+                neighbors += 1
+            if current_cells[right_coordinates][y] == '#':
+                neighbors += 1
+            if current_cells[left_coordinates][below_coordinates] == '#':
+                neighbors += 1
+            if current_cells[x][below_coordinates] == '#':
+                neighbors += 1
+            if current_cells[right_coordinates][below_coordinates] == '#':
+                neighbors += 1
+
+            # Set cells based on Conway's rules
+            if current_cells[x][y] == '#' and (neighbors == 2 or neighbors == 3):
+                next_cells[x][y] = '#'
+            elif current_cells[x][y] == ' ' and neighbors == 3:
+                next_cells[x][y] = '#'
+            else:
+                next_cells[x][y] = ' '
+
+    return next_cells
+
+
 def main() -> None:
 
-    # Create a list of lists for the cells
-    next_cells = create_initial_cells(WIDTH, HEIGHT)
+    cells = create_initial_cells(WIDTH, HEIGHT)
 
-    # MAIN LOOP
     while True:
         print("\n\n\n\n")
-        current_cells = deepcopy(next_cells)
 
-        display_cells_on_screen(HEIGHT, WIDTH, current_cells)
+        display_cells_on_screen(HEIGHT, WIDTH, cells)
 
-        sleep(30)
+        cells = get_next_cells(WIDTH, HEIGHT, cells)
+
+        sleep(1)
 
 
 if __name__ == '__main__':
