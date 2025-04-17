@@ -18,3 +18,11 @@ I chose to use the "run()" function in my code example because it waits for the 
 finish. Otherwise, Popen() with time.sleep(1) gives time for the subprocess to run before closing
 the program (there are better alternatives, like .wait(), for real-world programs, but for the
 sake of this example, it works).
+
+Double-clicking a .txt file on my computer will automatically launch the application associated
+with the .txt file extension (like notepad, to read it). My computer has several of these file
+extension associations set up already. Python can also open files this way with Popen().
+Each operating system has a program that performs the equivalent of double-clicking a document
+file to open it. On Windows, this is the "start" program. On macOS, this is the "open" program.
+On Ubuntu Linux, this is the "see" program.
+The "shell=True" keyword argument is needed only on Windows.
