@@ -8,3 +8,13 @@ I can pass commain line arguments to processes I create with Popen(). To do so, 
 a list as the sole argument to Popen(). The first element is the executable, the others
 are the command line arguments to pass. In effect, this list will be the value of sys.argv
 for the launched program.
+
+Most GUI applications will accept a single argument for a file that the applications will
+immediately open when they start.
+
+I can launch a Python script from Python just like any other application. If the script
+I'm launching needs command line arguments, add them to the list after the script's filename.
+I chose to use the "run()" function in my code example because it waits for the subprocess to
+finish. Otherwise, Popen() with time.sleep(1) gives time for the subprocess to run before closing
+the program (there are better alternatives, like .wait(), for real-world programs, but for the
+sake of this example, it works).
