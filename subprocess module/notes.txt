@@ -1,0 +1,10 @@
+If I have multiple instances of an application open, each of thoes instances is a separate
+process of the same program.
+
+Every process can have multiple threads. Unlike threads, a process cannot directly read
+and write another process's variables.
+
+I can pass commain line arguments to processes I create with Popen(). To do so, I pass
+a list as the sole argument to Popen(). The first element is the executable, the others
+are the command line arguments to pass. In effect, this list will be the value of sys.argv
+for the launched program.
