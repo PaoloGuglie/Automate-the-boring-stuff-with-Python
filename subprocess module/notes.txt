@@ -13,14 +13,14 @@ Most GUI applications will accept a single argument for a file that the applicat
 immediately open when they start.
 
 I can launch a Python script from Python just like any other application. If the script
-I'm launching needs command line arguments, add them to the list after the script's filename.
+I'm launching needs command line arguments, I can add them to the list after the script's filename.
 I chose to use the "run()" function in my code example because it waits for the subprocess to
 finish. Otherwise, Popen() with time.sleep(1) gives time for the subprocess to run before closing
 the program (there are better alternatives, like .wait(), for real-world programs, but for the
-sake of this example, it works).
+sake of this example it works).
 
 Double-clicking a .txt file on my computer will automatically launch the application associated
-with the .txt file extension (like notepad, to read it). My computer has several of these file
+with the .txt file extension (like notepad, to read files). My computer has several of these file
 extension associations set up already. Python can also open files this way with Popen().
 Each operating system has a program that performs the equivalent of double-clicking a document
 file to open it. On Windows, this is the "start" program. On macOS, this is the "open" program.

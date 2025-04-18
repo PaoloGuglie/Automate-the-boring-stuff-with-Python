@@ -3,5 +3,5 @@ threads read and write variables at the same time, causing the threads to trip o
 each other. Concurrency issues can be hard to reproduce consistently, making them
 hard to debug.
 To avoid concurrency issues, never let multiple threads read or write the same
-variables. When I create a new Thread object, make sure its target function uses
+variables. While creating a new Thread object, make sure its target function uses
 only local variables in that function.

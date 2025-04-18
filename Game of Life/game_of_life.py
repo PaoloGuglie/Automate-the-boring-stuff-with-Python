@@ -41,7 +41,8 @@ def get_next_cells(width: int, height: int, current_cells) -> list[list[str]]:
 
     for x in range(width):
         for y in range(height):
-            # get neighboring coordinates
+
+            # Get neighboring coordinates
             left_coordinates = (x - 1) % width
             right_coordinates = (x + 1) % width
             above_coordinates = (y - 1) % height
